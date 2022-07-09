@@ -1,0 +1,81 @@
+name: Course Workflow
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - 'tasks/**'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - 'tasks/**'
+  workflow_dispatch:
+
+concurrency:
+  group: ci-course-${{ github.ref }}-1
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  extensions: opcache, simplexml, mbstring, intl
+  tools: composer, cs2pr, phpstan, phpunit/phpunit, roave/security-advisories:dev-latest, squizlabs/php_codesniffer
+  ini_values: post_max_size=256M, max_execution_time=180, date.timezone=Asia/Tbilisi
+  cache_key: php-cache-v2
+  style_report: ./build/code-style/phpcs-report.xml
+
+jobs:
+  env-setup:
+    name: Set variables
+    runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.set-variables.outputs.cache-key }}
+      extensions: ${{ steps.set-variables.outputs.extensions }}
+      tools: ${{ steps.set-variables.outputs.tools }}
+      style-report: ${{ steps.set-variables.outputs.style-report }}
+    steps:
+      - name: Set variables
+        id: set-variables
+        run: |
+          echo "::set-output name=cache-key::${{ env.cache_key }}"
+          echo "::set-output name=extensions::${{ env.extensions }}"
+          echo "::set-output name=tools::${{ env.tools }}"
+          echo "::set-output name=style-report::${{ env.style_report }}"
+
+  security-advisory:
+    needs: [ env-setup ]
+    uses: edu-cat/.github/.github/workflows/_security_advisory.yml@master
+    with:
+      cache_key: ${{ needs.env-setup.outputs.cache-key }}
+      extensions: ${{ needs.env-setup.outputs.extensions }}
+      tools: ${{ needs.env-setup.outputs.tools }}
+
+  code-style:
+    needs: [ env-setup ]
+    uses: edu-cat/.github/.github/workflows/_code_style.yml@master
+    with:
+      cache_key: ${{ needs.env-setup.outputs.cache-key }}
+      style_report: ${{ needs.env-setup.outputs.style-report }}
+      extensions: ${{ needs.env-setup.outputs.extensions }}
+      tools: ${{ needs.env-setup.outputs.tools }}
+
+  code-analyse:
+    needs: [ env-setup ]
+    uses: edu-cat/.github/.github/workflows/_code_analyse.yml@master
+    with:
+      cache_key: ${{ needs.env-setup.outputs.cache-key }}
+      extensions: ${{ needs.env-setup.outputs.extensions }}
+      tools: ${{ needs.env-setup.outputs.tools }}
+
+  tests:
+    needs: [ env-setup ]
+    uses: edu-cat/.github/.github/workflows/_tests.yml@master
+    with:
+      cache_key: ${{ needs.env-setup.outputs.cache-key }}
+      extensions: ${{ needs.env-setup.outputs.extensions }}
+      tools: ${{ needs.env-setup.outputs.tools }}

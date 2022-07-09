@@ -1,0 +1,53 @@
+{
+    "name": "edu-cat/php-trainee-template",
+    "type": "project",
+    "description": "PHP Training Course for beginners",
+    "keywords": ["php", "training", "course", "beginner", "trainee", "junior"],
+    "homepage": "https://github.com/edu-cat/php-trainee-template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dzianis Kotau",
+            "email": "me@dzianiskotau.com",
+            "homepage": "https://dzianiskotau.com/",
+            "role": "Owner"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/edu-cat/php-trainee-template/issues"
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": ["lib/includes.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpcs": "phpcs --standard=PSR12 src/ tests/",
+        "phpcbf": "phpcbf --standard=PSR12 src/ tests/",
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "phpstan": "vendor/bin/phpstan analyze",
+        "sec-advisory": "composer update --dry-run roave/security-advisories"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
