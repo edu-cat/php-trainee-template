@@ -20,3 +20,7 @@ function myTernary(int $n): string
 
     return ($n . ' ' . $r);
 }
+
+
+
+
