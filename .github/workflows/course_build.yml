@@ -76,8 +76,6 @@ jobs:
       cache_key: ${{ needs.env-setup.outputs.cache-key }}
       extensions: ${{ needs.env-setup.outputs.extensions }}
       tools: ${{ needs.env-setup.outputs.tools }}
-      matrix_os: ${{ needs.env-setup.outputs.matrix-os }}
-      matrix_php: ${{ needs.env-setup.outputs.matrix-php }}
 
   tests:
     needs: [ env-setup ]
