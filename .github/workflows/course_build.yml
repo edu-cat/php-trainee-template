@@ -26,7 +26,7 @@ env:
   extensions: opcache, simplexml, mbstring, intl
   tools: composer, cs2pr, phpstan, phpunit/phpunit, roave/security-advisories:dev-latest, squizlabs/php_codesniffer
   ini_values: post_max_size=256M, max_execution_time=180, date.timezone=Asia/Tbilisi
-  cache_key: php-cache-v2
+  cache_key: php-cache-v3
   style_report: ./build/code-style/phpcs-report.xml
 
 jobs:
