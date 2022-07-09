@@ -28,6 +28,8 @@ env:
   ini_values: post_max_size=256M, max_execution_time=180, date.timezone=Asia/Tbilisi
   cache_key: php-cache-v2
   style_report: ./build/code-style/phpcs-report.xml
+  matrix_os: ubuntu-latest
+  matrix_php: 8.1
 
 jobs:
   env-setup:
@@ -38,6 +40,7 @@ jobs:
       extensions: ${{ steps.set-variables.outputs.extensions }}
       tools: ${{ steps.set-variables.outputs.tools }}
       style-report: ${{ steps.set-variables.outputs.style-report }}
+      matrix-os: ${{ steps.set-variables.outputs.matrix-os }}
     steps:
       - name: Set variables
         id: set-variables
@@ -46,6 +49,8 @@ jobs:
           echo "::set-output name=extensions::${{ env.extensions }}"
           echo "::set-output name=tools::${{ env.tools }}"
           echo "::set-output name=style-report::${{ env.style_report }}"
+          echo "::set-output name=matrix-os::${{ env.matrix_os }}"
+          echo "::set-output name=matrix-php::${{ env.matrix_php }}"
 
   security-advisory:
     needs: [ env-setup ]
@@ -71,6 +76,8 @@ jobs:
       cache_key: ${{ needs.env-setup.outputs.cache-key }}
       extensions: ${{ needs.env-setup.outputs.extensions }}
       tools: ${{ needs.env-setup.outputs.tools }}
+      matrix_os: ${{ needs.env-setup.outputs.matrix-os }}
+      matrix_php: ${{ needs.env-setup.outputs.matrix-php }}
 
   tests:
     needs: [ env-setup ]
