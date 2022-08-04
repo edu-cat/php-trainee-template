@@ -37,10 +37,10 @@
         }
     },
     "scripts": {
-        "phpcs": "phpcs --standard=PSR12 src/ tests/",
-        "phpcbf": "phpcbf --standard=PSR12 src/ tests/",
-        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
-        "phpstan": "vendor/bin/phpstan analyze",
+        "style": "phpcs --standard=PSR12 src/ tests/",
+        "fix-style": "phpcbf --standard=PSR12 src/ tests/",
+        "tests": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "analyse": "vendor/bin/phpstan analyze",
         "sec-advisory": "composer update --dry-run roave/security-advisories"
     },
     "config": {
