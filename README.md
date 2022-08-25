@@ -42,12 +42,11 @@ git config --global user.email "your_email"
 ```
 
 ## Workflow
-1. You will be granted access to the repository with tasks.
-2. Clone the repository to your machine.
-3. Subscribe to the repository to be able to receive any notification on it.
-4. Create separate branch and folder in src/ and tests/ for each task.
-5. When you are ready to show your solution (task and tests), create Pull Request (PR).
-6. If you have errors reported by GitHub Actions, check their details and fix issues.
+1. Clone this repository to your machine.
+2. Subscribe to the repository to be able to receive any notification on it.
+3. Create separate branch and folders in src/ and tests/ for each task. 
+4. When you are ready to show your solution (task and tests), create Pull Request (PR). 
+5. If you have errors reported by GitHub Actions, check their details and fix issues.
 
 ## Special Notes
 1. See Task1 [source](src/Task1/myTernary.php) and [test](tests/Task1/MyTernaryTest.php) 
@@ -57,11 +56,11 @@ for code styling, autoload, etc.
 3. Use English for comments, class, properties, methods, functions, etc.
 4. If you use files without class declaration, add your src file to 
 [includes.php](lib/includes.php) file to be able to run tests.
-5. Before creating PR run in your machine following commands
+5. Before creating PR run following commands in your machine 
 
-    - `composer phpcs` to check code style 
-    - `composer phplint` to perform static analyze
-    - `composer phpunit` to run tests
+    - `composer style` to check code style 
+    - `composer analyse` to perform static analyze
+    - `composer tests` to run tests
 
 6. Create PR only after all above commands run with green (success) return status.
 
