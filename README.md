@@ -67,10 +67,12 @@ for code styling, autoload, etc.
 ## See also
 1. [PHP Documentation](https://www.php.net/docs.php)
 2. [PHP: The Right Way](https://phptherightway.com/)
-3. [Laracasts](https://laracasts.com/)
-4. [SymfonyCasts](https://symfonycasts.com/)
-5. [Laravel Daily](https://laraveldaily.com/)
-6. [PHP Point](https://www.youtube.com/c/PHPPoint/videos)
-7. [Composer](https://getcomposer.org/)
-8. [Git Book](https://git-scm.com/book/en/v2)
+3. [CutCode - PHP](https://www.youtube.com/watch?v=XUUxlNY5oOg&list=PLTucyHptHtTlPKuCdveqnaZE_Mi-F1LhE)
+4. [CutCode](https://www.youtube.com/c/CutCodeRu/videos)
+5. [Laracasts](https://laracasts.com/)
+6. [SymfonyCasts](https://symfonycasts.com/)
+7. [Laravel Daily](https://laraveldaily.com/)
+8. [PHP Point](https://www.youtube.com/c/PHPPoint/videos)
+9. [Composer](https://getcomposer.org/)
+10. [Git Book](https://git-scm.com/book/en/v2)
 
