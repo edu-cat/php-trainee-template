@@ -47,14 +47,6 @@ jobs:
           echo "::set-output name=tools::${{ env.tools }}"
           echo "::set-output name=style-report::${{ env.style_report }}"
 
-  security-advisory:
-    needs: [ env-setup ]
-    uses: edu-cat/.github/.github/workflows/_security_advisory.yml@master
-    with:
-      cache_key: ${{ needs.env-setup.outputs.cache-key }}
-      extensions: ${{ needs.env-setup.outputs.extensions }}
-      tools: ${{ needs.env-setup.outputs.tools }}
-
   code-style:
     needs: [ env-setup ]
     uses: edu-cat/.github/.github/workflows/_code_style.yml@master
