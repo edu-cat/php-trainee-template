@@ -22,7 +22,6 @@
     "require-dev": {
         "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^9.5",
-        "roave/security-advisories": "dev-latest",
         "squizlabs/php_codesniffer": "^3.6"
     },
     "autoload": {
@@ -41,10 +40,8 @@
         "fix-style": "phpcbf --standard=PSR12 src/ tests/",
         "analyse": "vendor/bin/phpstan analyze --ansi --memory-limit=-1",
         "tests": "XDEBUG_MODE=coverage vendor/bin/phpunit",
-        "sec-advisory": "composer update roave/security-advisories --dry-run --ansi",
         "all": [
             "@composer validate --strict --ansi",
-            "@sec-advisory",
             "@style",
             "@analyse",
             "@tests"
